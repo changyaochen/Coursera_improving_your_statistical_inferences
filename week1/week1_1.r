@@ -6,7 +6,7 @@ options(scipen=999)
 #Set number of simulations
 nSims <- 100000 #number of simulated experiments
 
-M <- 112 #Mean IQ score in the sample (will be compared with 100 in a one-sample t-test)
+M <- 107 #Mean IQ score in the sample (will be compared with 100 in a one-sample t-test)
 n <- 51 #set sample size
 SD <- 15 #SD of the simulated data
 #With a mean difference of 6, and SD of 15, and a sample size of 26, the test has 50% power)
@@ -31,7 +31,7 @@ power <- pwr.t.test(d=(M - 100) / SD, n=n, sig.level=0.05,
 op <- par(mar = c(5,7,4,4)) #change white-space around graph
 hist(p, breaks=bars, xlab="P-values", ylab="number of p-values\n", axes=FALSE,
      main=paste("P-value Distribution with",round(power*100, digits=3),"% Power"),
-     col="grey", xlim=c(0, 1),  ylim=c(0, 10000))
+     col="grey", xlim=c(0, 0.1),  ylim=c(0, 10000))
 axis(side=1, at=seq(0,1, 0.1), labels=seq(0, 1, 0.1))
 axis(side=2, at=seq(0, nSims, nSims / 4), labels=seq(0, nSims, nSims/ 4), las=2)
 abline(h=nSims/bars, col = "red", lty=3)

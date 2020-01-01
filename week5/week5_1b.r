@@ -11,18 +11,19 @@ library(ggplot2)
 if(!require(Rcpp)){install.packages('Rcpp')}
 library(Rcpp)
 
-n=20 #set sample size
-nSims<-100000 #set number of simulations
+set.seed(1000)
+n = 20 #set sample size
+nSims <- 100000 #set number of simulations
 
-x<-rnorm(n = n, mean = 100, sd = 15) #create sample from normal distribution
+x <- rnorm(n=n, mean=100, sd=15) #create sample from normal distribution
 
 #95% Confidence Interval
-CIU<-mean(x)+qt(0.975, df = n-1)*sd(x)*sqrt(1/n)
-CIL<-mean(x)-qt(0.975, df = n-1)*sd(x)*sqrt(1/n)
+CIU <- mean(x) + qt(0.975, df=n - 1) * sd(x) * sqrt(1 / n)
+CIL <- mean(x) - qt(0.975, df=n - 1) * sd(x) * sqrt(1 / n)
 
 #95% Prediction Interval
-PIU<-mean(x)+qt(0.975, df = n-1)*sd(x)*sqrt(1+1/n)
-PIL<-mean(x)-qt(0.975, df = n-1)*sd(x)*sqrt(1+1/n)
+PIU <- mean(x) + qt(0.975, df=n - 1) * sd(x) * sqrt(1 + 1 / n)
+PIL <- mean(x) - qt(0.975, df=n - 1) * sd(x) * sqrt(1 + 1 / n)
 
 #plot data
 #png(file="CI_mean.png",width=2000,height=2000, res = 300)
@@ -38,20 +39,20 @@ ggplot(as.data.frame(x), aes(x))  +
 #dev.off()
 
 #Simulate Confidence Intervals
-CIU_sim<-numeric(nSims)
-CIL_sim<-numeric(nSims)
-mean_sim<-numeric(nSims)
+CIU_sim <- numeric(nSims)
+CIL_sim <- numeric(nSims)
+mean_sim <- numeric(nSims)
 
 for(i in 1:nSims){ #for each simulated experiment
-  x<-rnorm(n = n, mean = 100, sd = 15) #create sample from normal distribution
-  CIU_sim[i]<-mean(x)+qt(0.975, df = n-1)*sd(x)*sqrt(1/n)
-  CIL_sim[i]<-mean(x)-qt(0.975, df = n-1)*sd(x)*sqrt(1/n)
-  mean_sim[i]<-mean(x) #store means of each sample
+  x <- rnorm(n=n, mean=100, sd=15) #create sample from normal distribution
+  CIU_sim[i] <- mean(x) + qt(0.975, df=n - 1) * sd(x) * sqrt(1 / n)
+  CIL_sim[i] <- mean(x) - qt(0.975, df=n - 1) * sd(x) * sqrt(1 / n)
+  mean_sim[i] <- mean(x) #store means of each sample
 }
 
 #Save only those simulations where the true value was inside the 95% CI
-CIU_sim<-CIU_sim[CIU_sim<100]
-CIL_sim<-CIL_sim[CIL_sim>100]
+CIU_sim <- CIU_sim[CIU_sim < 100]
+CIL_sim <- CIL_sim[CIL_sim > 100]
 
 cat((100*(1-(length(CIU_sim)/nSims+length(CIL_sim)/nSims))),"% of the 95% confidence intervals contained the true mean")
 

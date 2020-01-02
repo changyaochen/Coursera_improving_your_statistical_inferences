@@ -3,12 +3,11 @@ if(!require(ggplot2)){install.packages('ggplot2')}
 library(ggplot2)
 
 #Simulate one group
-n=10 #set sample size
-x<-rnorm(n = n, mean = 100, sd = 15) #create sample from normal distribution
-
+n = 1000 #set sample size
+x <- rnorm(n=n, mean=100, sd=15) #create sample from normal distribution
 
 #plot data
-ggplot(as.data.frame(x), aes(x))  + 
+ggplot(as.data.frame(x), aes(x)) + 
   geom_histogram(colour="black", fill="grey", aes(y=..density..), binwidth=2) +
   stat_function(fun=dnorm, args=c(mean=100,sd=15), size=1, color="red", lty=2) +
   #  geom_density(fill=NA, colour="black", size = 1) +

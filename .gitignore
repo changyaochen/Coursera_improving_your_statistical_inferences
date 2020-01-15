@@ -1,4 +1,6 @@
 **/.DS_store
+**/.ipynb_checkpoints/
+**/data/
 
 # History files
 .Rhistory

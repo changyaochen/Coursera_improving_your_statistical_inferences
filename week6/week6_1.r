@@ -18,10 +18,10 @@ powerTOSTtwo(alpha=0.01, N=15, statistical_power=0.9)
 
 #Question 5 and 6 (replace the zeroes with correct values)
 # You can type ?powerTOSTtwo for help with the powerTOSTtwo function
-powerTOSTtwo(alpha=0.10, 
-             statistical_power=0.95, 
-             low_eqbound_d=-0.25, 
-             high_eqbound_d=0.25)
+powerTOSTtwo(alpha=0.05, 
+             statistical_power=0.90, 
+             low_eqbound_d=-0.05, 
+             high_eqbound_d=0.05)
 
 #Question 7 (replace the zeroes with correct values)
 # You can type ?TOSTmeta for help with the TOSTmeta function

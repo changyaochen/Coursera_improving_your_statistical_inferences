@@ -1,0 +1,10 @@
+Q2. The average imdb ratings for movies longer than 120 minutes and shorter than 120 minutes are equivalent.
+Q3. imdb ratings (from 0 to 10) for all the movies released after 1980.
+Q4. All movies need to be released after 1980; and the maximum duration is less than 600 minutes.
+Q5. We will conduct a 2-sample t-test, and we consider |cohen's| less than 0.05 as equivalent.
+Q6. See Q4.
+Q7. 8658.
+Q8. n/a.
+Q9. Coursera - improving your statistical inferences
+
+https://mfr.osf.io/render?url=https://osf.io/jua9q/?direct%26mode=render%26action=download%26mode=render
